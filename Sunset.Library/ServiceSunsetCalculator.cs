@@ -16,11 +16,14 @@ namespace Sunset.Library
         {
             // call service to get data
 
+            // hardcode service data
+            string serviceData = "{\"results\": {\"sunrise\": \"6:37:49 AM\", \"sunset\": \"4:42:49 PM\", \"solar_noon\": \"11:40:19 AM\", \"day_length\": \"10:05:00.1530000\"}, \"status\": \"OK\"}";
+
             // parse sunset from data
+            string sunsetTimeString = ParseSunset(serviceData);
 
-            // convert sunset ro DateTime
-
-            throw new NotImplementedException();
+            // convert sunset to DateTime
+            return LocalTime(sunsetTimeString, date);
         }
 
         public static string ParseSunset(string jsonContent)

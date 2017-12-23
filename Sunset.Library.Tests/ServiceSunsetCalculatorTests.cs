@@ -65,5 +65,20 @@ namespace Sunset.Library.Tests
             Assert.Equal(expected, actual);
         }
 
+        [Fact]
+        public void GetSunset_OnValidDate_ReturnsExpectedDateTime()
+        {
+            // Arrange
+            ServiceSunsetCalculator calculator = new ServiceSunsetCalculator();
+            DateTime inputDate = new DateTime(2016, 11, 30);
+            DateTime expectedDateTime = new DateTime(2016, 11, 30, 16, 42, 49);
+
+            // Act
+            DateTime actualDateTime = calculator.GetSunset(inputDate);
+
+            // Assert
+            Assert.Equal(expectedDateTime, actualDateTime);
+        }
+
     }
 }
