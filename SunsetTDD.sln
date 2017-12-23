@@ -1,0 +1,29 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sunset.Interface", "Sunset.Interface\Sunset.Interface.csproj", "{DBAB7B27-289B-434B-9486-BF0F40C88D94}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sunset.Library", "Sunset.Library\Sunset.Library.csproj", "{1376D59E-770C-4BA3-80E8-CEF28D862919}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sunset.Library.Tests", "Sunset.Library.Tests\Sunset.Library.Tests.csproj", "{4DC53CB8-EA8A-4698-92B8-772D3B25FD7D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DBAB7B27-289B-434B-9486-BF0F40C88D94}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DBAB7B27-289B-434B-9486-BF0F40C88D94}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DBAB7B27-289B-434B-9486-BF0F40C88D94}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DBAB7B27-289B-434B-9486-BF0F40C88D94}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1376D59E-770C-4BA3-80E8-CEF28D862919}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1376D59E-770C-4BA3-80E8-CEF28D862919}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1376D59E-770C-4BA3-80E8-CEF28D862919}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1376D59E-770C-4BA3-80E8-CEF28D862919}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4DC53CB8-EA8A-4698-92B8-772D3B25FD7D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4DC53CB8-EA8A-4698-92B8-772D3B25FD7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4DC53CB8-EA8A-4698-92B8-772D3B25FD7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4DC53CB8-EA8A-4698-92B8-772D3B25FD7D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
