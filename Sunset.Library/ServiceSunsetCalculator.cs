@@ -1,4 +1,5 @@
 ﻿using System;
+using Newtonsoft.Json;
 using Sunset.Interface;
 
 namespace Sunset.Library
@@ -19,6 +20,13 @@ namespace Sunset.Library
             // convert sunset ro DateTime
 
             throw new NotImplementedException();
+        }
+
+        public static string ParseSunset(string goodData)
+        {
+            dynamic data = JsonConvert.DeserializeObject(goodData);
+            string sunset = data.results.sunset;
+            return sunset;
         }
     }
 }
