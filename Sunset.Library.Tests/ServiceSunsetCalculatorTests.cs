@@ -7,6 +7,7 @@ namespace Sunset.Library.Tests
     public class ServiceSunsetCalculatorTests
     {
         string goodData = "{\"results\": {\"sunrise\": \"6:37:49 AM\", \"sunset\": \"4:42:49 PM\", \"solar_noon\": \"11:40:19 AM\", \"day_length\": \"10:05:00.1530000\"}, \"status\": \"OK\"}";
+        string badData  = "{\"results\": null, \"status\": \"ERROR\"}";
 
         [Fact]
         public void ServiceSunsetCalculator_ImplementISunsetCalculator()
@@ -29,6 +30,24 @@ namespace Sunset.Library.Tests
 
             // Assert
             Assert.Equal(expected, actual);
+        }
+
+        [Fact]
+        public void ParseJsonSunsetValue_OnBadData_ThrowArgumentxception()
+        {
+            try
+            {
+                // Act
+                string actual = ServiceSunsetCalculator.ParseSunset(badData);
+
+                // Assert
+                Assert.True(false, "ArgumentException was not thrown");
+            }
+            catch (ArgumentException)
+            {
+                // Assert
+                Assert.True(true);
+            }
         }
     }
 }

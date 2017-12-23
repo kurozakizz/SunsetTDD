@@ -1,4 +1,5 @@
 ﻿using System;
+using Microsoft.CSharp.RuntimeBinder;
 using Newtonsoft.Json;
 using Sunset.Interface;
 
@@ -24,9 +25,16 @@ namespace Sunset.Library
 
         public static string ParseSunset(string jsonContent)
         {
-            dynamic data = JsonConvert.DeserializeObject(jsonContent);
-            string sunset = data.results.sunset;
-            return sunset;
+            try
+            {
+                dynamic data = JsonConvert.DeserializeObject(jsonContent);
+                string sunset = data.results.sunset;
+                return sunset;
+            }
+            catch (RuntimeBinderException)
+            {
+                throw new ArgumentException($"JSON Object dose not contain 'sunset': {jsonContent} ");
+            }
         }
     }
 }
