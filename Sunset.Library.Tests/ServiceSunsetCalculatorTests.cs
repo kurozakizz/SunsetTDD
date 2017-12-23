@@ -4,6 +4,14 @@ using Xunit;
 
 namespace Sunset.Library.Tests
 {
+    public class StubSolarService : ISolarService
+    {
+        public string GetServiceData(DateTime date)
+        {
+            return "{\"results\": {\"sunrise\": \"6:37:49 AM\", \"sunset\": \"4:42:49 PM\", \"solar_noon\": \"11:40:19 AM\", \"day_length\": \"10:05:00.1530000\"}, \"status\": \"OK\"}";
+        }
+    }
+
     public class ServiceSunsetCalculatorTests
     {
         string goodData = "{\"results\": {\"sunrise\": \"6:37:49 AM\", \"sunset\": \"4:42:49 PM\", \"solar_noon\": \"11:40:19 AM\", \"day_length\": \"10:05:00.1530000\"}, \"status\": \"OK\"}";
@@ -70,6 +78,7 @@ namespace Sunset.Library.Tests
         {
             // Arrange
             ServiceSunsetCalculator calculator = new ServiceSunsetCalculator();
+            calculator.Service = new StubSolarService();
             DateTime inputDate = new DateTime(2016, 11, 30);
             DateTime expectedDateTime = new DateTime(2016, 11, 30, 16, 42, 49);
 
