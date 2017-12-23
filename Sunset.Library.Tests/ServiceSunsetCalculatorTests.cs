@@ -52,7 +52,7 @@ namespace Sunset.Library.Tests
         }
 
         [Fact]
-        public void LocalTime_OnValidValue_ReturnsExpectedDateTime()
+        public void ToLocalTime_OnValidValue_ReturnsExpectedDateTime()
         {
             // Arrange
             string timeString = "4:42:49 PM";
@@ -60,7 +60,7 @@ namespace Sunset.Library.Tests
             DateTime expected = new DateTime(2016, 11, 30, 16, 42, 49);
 
             // Act
-            DateTime actual = ServiceSunsetCalculator.LocalTime(timeString, inputDate);
+            DateTime actual = ServiceSunsetCalculator.ToLocalTime(timeString, inputDate);
 
             // Assert
             Assert.Equal(expected, actual);

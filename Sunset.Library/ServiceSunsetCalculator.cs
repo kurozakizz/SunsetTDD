@@ -36,7 +36,7 @@ namespace Sunset.Library
             string sunsetTimeString = ParseSunset(serviceData);
 
             // convert sunset to DateTime
-            return LocalTime(sunsetTimeString, date);
+            return ToLocalTime(sunsetTimeString, date);
         }
 
         public static string ParseSunset(string jsonContent)
@@ -52,7 +52,7 @@ namespace Sunset.Library
             }
         }
 
-        public static DateTime LocalTime(string timeString, DateTime inputDate)
+        public static DateTime ToLocalTime(string timeString, DateTime inputDate)
         {
             DateTime time = DateTime.Parse(timeString);
             return inputDate + time.TimeOfDay;
