@@ -1,21 +1,14 @@
 using System;
+using Moq;
 using Sunset.Interface;
 using Xunit;
 
 namespace Sunset.Library.Tests
 {
-    public class StubSolarService : ISolarService
-    {
-        public string GetServiceData(DateTime date)
-        {
-            return "{\"results\": {\"sunrise\": \"6:37:49 AM\", \"sunset\": \"4:42:49 PM\", \"solar_noon\": \"11:40:19 AM\", \"day_length\": \"10:05:00.1530000\"}, \"status\": \"OK\"}";
-        }
-    }
-
     public class ServiceSunsetCalculatorTests
     {
-        string goodData = "{\"results\": {\"sunrise\": \"6:37:49 AM\", \"sunset\": \"4:42:49 PM\", \"solar_noon\": \"11:40:19 AM\", \"day_length\": \"10:05:00.1530000\"}, \"status\": \"OK\"}";
-        string badData  = "{\"results\": null, \"status\": \"ERROR\"}";
+        string successData = "{\"results\": {\"sunrise\": \"6:37:49 AM\", \"sunset\": \"4:42:49 PM\", \"solar_noon\": \"11:40:19 AM\", \"day_length\": \"10:05:00.1530000\"}, \"status\": \"OK\"}";
+        string errorData  = "{\"results\": null, \"status\": \"ERROR\"}";
 
         [Fact]
         public void ServiceSunsetCalculator_ImplementISunsetCalculator()
@@ -34,7 +27,7 @@ namespace Sunset.Library.Tests
             string expected = "4:42:49 PM";
 
             // Act
-            string actual = ServiceSunsetCalculator.ParseSunset(goodData);
+            string actual = ServiceSunsetCalculator.ParseSunset(successData);
 
             // Assert
             Assert.Equal(expected, actual);
@@ -46,7 +39,7 @@ namespace Sunset.Library.Tests
             try
             {
                 // Act
-                string actual = ServiceSunsetCalculator.ParseSunset(badData);
+                string actual = ServiceSunsetCalculator.ParseSunset(errorData);
 
                 // Assert
                 Assert.True(false, "ArgumentException was not thrown");
@@ -77,8 +70,12 @@ namespace Sunset.Library.Tests
         public void GetSunset_OnValidDate_ReturnsExpectedDateTime()
         {
             // Arrange
+            var serviceMoq = new Mock<ISolarService>();
+            serviceMoq
+                .Setup(s => s.GetServiceData(It.IsAny<DateTime>()))
+                .Returns(successData);
             ServiceSunsetCalculator calculator = new ServiceSunsetCalculator();
-            calculator.Service = new StubSolarService();
+            calculator.Service = serviceMoq.Object;
             DateTime inputDate = new DateTime(2016, 11, 30);
             DateTime expectedDateTime = new DateTime(2016, 11, 30, 16, 42, 49);
 
