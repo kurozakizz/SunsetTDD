@@ -22,11 +22,6 @@ namespace Sunset.Library
             set { service = value; }
         }
 
-        public DateTime GetSunrise(DateTime date)
-        {
-            throw new NotImplementedException();
-        }
-
         public DateTime GetSunset(DateTime date)
         {
             // call service to get data
