@@ -28,8 +28,7 @@ namespace Sunset.Library
             try
             {
                 dynamic data = JsonConvert.DeserializeObject(jsonContent);
-                string sunset = data.results.sunset;
-                return sunset;
+                return data.results.sunset;
             }
             catch (RuntimeBinderException)
             {
