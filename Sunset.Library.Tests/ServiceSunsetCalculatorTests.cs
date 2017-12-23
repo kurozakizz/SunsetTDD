@@ -49,5 +49,21 @@ namespace Sunset.Library.Tests
                 Assert.True(true);
             }
         }
+
+        [Fact]
+        public void LocalTime_OnValidValue_ReturnsExpectedDateTime()
+        {
+            // Arrange
+            string timeString = "4:42:49 PM";
+            DateTime inputDate = new DateTime(2016, 11, 30);
+            DateTime expected = new DateTime(2016, 11, 30, 16, 42, 49);
+
+            // Act
+            DateTime actual = ServiceSunsetCalculator.LocalTime(timeString, inputDate);
+
+            // Assert
+            Assert.Equal(expected, actual);
+        }
+
     }
 }

@@ -36,5 +36,11 @@ namespace Sunset.Library
                 throw new ArgumentException($"JSON Object dose not contain 'sunset': {jsonContent} ");
             }
         }
+
+        public static DateTime LocalTime(string timeString, DateTime inputDate)
+        {
+            DateTime time = DateTime.Parse(timeString);
+            return inputDate + time.TimeOfDay;
+        }
     }
 }
