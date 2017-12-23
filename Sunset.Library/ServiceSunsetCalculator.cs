@@ -22,9 +22,9 @@ namespace Sunset.Library
             throw new NotImplementedException();
         }
 
-        public static string ParseSunset(string goodData)
+        public static string ParseSunset(string jsonContent)
         {
-            dynamic data = JsonConvert.DeserializeObject(goodData);
+            dynamic data = JsonConvert.DeserializeObject(jsonContent);
             string sunset = data.results.sunset;
             return sunset;
         }
